@@ -1,10 +1,12 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap 101 Template</title>
+    <title>CompanyMedia</title>
+    <link href="css/signin.css" rel="stylesheet">
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -17,7 +19,16 @@
     <![endif]-->
 </head>
 <body>
-<h1>Hello, world!</h1>
+<div class="container">
+
+    <form class="form-signin" role="form">
+        <h2 class="form-signin-heading">Введите логин и пароль</h2>
+        <input type="email" class="form-control" placeholder="Логин" required autofocus>
+        <input type="password" class="form-control" placeholder="Пароль" required>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Войти</button>
+    </form>
+
+</div>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://code.jquery.com/jquery.js"></script>
