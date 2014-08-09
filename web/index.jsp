@@ -3,21 +3,33 @@
 <%@ page import="java.sql.PreparedStatement" %>
 <%@ page import="java.sql.ResultSet" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <%
     try {
-        String subm = request.getParameter("submit");
-        if (subm != null) {
-            Connection connection = DbConnection.getConnection();
-            PreparedStatement preparedStatement = null;
-            // ? - место вставки нашего значеня
-            preparedStatement = connection.prepareStatement(
-                    "SELECT * FROM users where fio = ? and password = ?");
-            //Устанавливаем в нужную позицию значения определённого типа
-            preparedStatement.setString(1, request.getParameter("fio"));
-            preparedStatement.setString(2, request.getParameter("password"));
-            //выполняем запрос
-            ResultSet result2 = preparedStatement.executeQuery();
+        Boolean errorLogin = null;
+        String myname = (String) session.getAttribute("username");
+
+        if (myname != null) {
+            errorLogin=false;
+        } else {
+            String subm = request.getParameter("submit");
+            if (subm != null) {
+                Connection connection = DbConnection.getConnection();
+                PreparedStatement preparedStatement = null;
+                // ? - место вставки нашего значеня
+                preparedStatement = connection.prepareStatement(
+                        "SELECT * FROM employee where fio = ? and password = ?");
+                //Устанавливаем в нужную позицию значения определённого типа
+                preparedStatement.setString(1, request.getParameter("fio"));
+                preparedStatement.setString(2, request.getParameter("password"));
+                //выполняем запрос
+                ResultSet result2 = preparedStatement.executeQuery();
+                errorLogin=!result2.next();
+                //TODO: класть объект user в сессию
+            }
         }
+        pageContext.setAttribute("errorLogin", errorLogin);
     } catch (Exception ex) {
         ex.printStackTrace();
     }
@@ -43,12 +55,14 @@
 </head>
 <body>
 <div class="container">
-
-    <form class="form-signin" role="form">
+    <c:if test="${errorLogin==false}"><c:redirect url="/page1.jsp"/></c:if>
+    <form class="form-signin" role="form" method="POST">
         <h2 class="form-signin-heading">Введите логин и пароль</h2>
         <input class="form-control" placeholder="Логин" name="fio" required autofocus>
         <input type="password" class="form-control" placeholder="Пароль" name="password" required>
         <button class="btn btn-lg btn-primary btn-block" type="submit" name="submit" value="submit">Войти</button>
+        <c:if test="${errorLogin==true}"><div style="color: red">Неверный логин или пароль</div></c:if>
+
     </form>
 
 </div>
