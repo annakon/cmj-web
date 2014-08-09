@@ -1,5 +1,7 @@
 <%@ page import="java.sql.*" %>
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="ru.cmj.User" %>
+<%@ page import="ru.cmj.DbConnection" %>
 <%--
   Created by IntelliJ IDEA.
   User: akonshina
@@ -11,23 +13,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%
-        ArrayList<String> mas=new ArrayList<String>();
-        PreparedStatement preparedStatement = null;
-        Connection connection = null;
-        String url = "jdbc:mysql://127.0.0.1/cmj";
-        //Имя пользователя БД
-        String name = "forcmj";
-        //Пароль
-        String password = "superpass!23";
+        ArrayList<User> mas=new ArrayList<User>();
+        User us;
+        PreparedStatement preparedStatement;
         try {
-            //Загружаем драйвер
-            Class.forName("com.mysql.jdbc.Driver");
-            System.out.println("Драйвер подключен");
-            //Создаём соединение
-            connection = DriverManager.getConnection(url, name, password);
-            System.out.println("Соединение установлено");
-            //Для использования SQL запросов существуют 3 типа объектов:
-            //1.Statement: используется для простых случаев без параметров
+            Connection connection = DbConnection.getConnection();
             String subm= request.getParameter("submit");
             if(subm != null) {
                 preparedStatement = connection.prepareStatement(
@@ -41,22 +31,19 @@
                 preparedStatement.executeUpdate();
             }
             Statement statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("SELECT fio FROM employee");
+            ResultSet rs = statement.executeQuery("SELECT fio,can_req,can_read,can_edit,can_create_user FROM employee");
             while (rs.next()) {
-                mas.add(rs.getString("fio"));
+                us=new User();
+                us.setFio(rs.getString("fio"));
+                us.setCanReq(rs.getInt("can_req") == 1);
+                us.setCanRead(rs.getInt("can_read") == 1);
+                us.setCanEdit(rs.getInt("can_edit") == 1);
+                us.setCanAdmin(rs.getInt("can_create_user") == 1);
+                mas.add(us);
             }
             pageContext.setAttribute("mas", mas);
         } catch (Exception ex) {
             ex.printStackTrace();
-            //выводим наиболее значимые сообщения
-        } finally {
-            if (connection != null) {
-                try {
-                    connection.close();
-                } catch (SQLException ex) {
-                    ex.printStackTrace();
-                }
-            }
         }
 %>
 <html lang="en">
@@ -145,11 +132,21 @@
                     <thead>
                     <tr>
                         <th>ФИО</th>
+                        <th>чтение</th>
+                        <th>редактирование</th>
+                        <th>регистрация</th>
+                        <th>администрирование</th>
                     </tr>
                     </thead>
                     <tbody>
-                        <c:forEach items="${mas}" var="i">
-                        <tr><td><c:out value="${i}"/></td></tr>
+                        <c:forEach items="${mas}" var="u">
+                        <tr>
+                            <td><c:out value="${u.fio}"/></td>
+                            <td><c:if test="${u.canRead}"><span class="glyphicon glyphicon-ok"></span></c:if></td>
+                            <td><c:if test="${u.canEdit}"><span class="glyphicon glyphicon-ok"></span></c:if></td>
+                            <td><c:if test="${u.canReq}"><span class="glyphicon glyphicon-ok"></span></c:if></td>
+                            <td><c:if test="${u.canAdmin}"><span class="glyphicon glyphicon-ok"></span></c:if></td>
+                        </tr>
                         </c:forEach>
                     </tbody>
                 </table>

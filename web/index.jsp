@@ -1,4 +1,27 @@
+<%@ page import="java.sql.Connection" %>
+<%@ page import="ru.cmj.DbConnection" %>
+<%@ page import="java.sql.PreparedStatement" %>
+<%@ page import="java.sql.ResultSet" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    try {
+        String subm = request.getParameter("submit");
+        if (subm != null) {
+            Connection connection = DbConnection.getConnection();
+            PreparedStatement preparedStatement = null;
+            // ? - место вставки нашего значеня
+            preparedStatement = connection.prepareStatement(
+                    "SELECT * FROM users where fio = ? and password = ?");
+            //Устанавливаем в нужную позицию значения определённого типа
+            preparedStatement.setString(1, request.getParameter("fio"));
+            preparedStatement.setString(2, request.getParameter("password"));
+            //выполняем запрос
+            ResultSet result2 = preparedStatement.executeQuery();
+        }
+    } catch (Exception ex) {
+        ex.printStackTrace();
+    }
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,9 +46,9 @@
 
     <form class="form-signin" role="form">
         <h2 class="form-signin-heading">Введите логин и пароль</h2>
-        <input class="form-control" placeholder="Логин" required autofocus>
-        <input type="password" class="form-control" placeholder="Пароль" required>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Войти</button>
+        <input class="form-control" placeholder="Логин" name="fio" required autofocus>
+        <input type="password" class="form-control" placeholder="Пароль" name="password" required>
+        <button class="btn btn-lg btn-primary btn-block" type="submit" name="submit" value="submit">Войти</button>
     </form>
 
 </div>

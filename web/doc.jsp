@@ -47,7 +47,7 @@
                 <label for="InputFile">Содержание</label>
                 <input type="file" id="InputFile">
             </div>
-            <button type="submit" class="btn btn-primary">Сохранить</button>
+            <button type="submit" name="submit" value="submit" class="btn btn-primary">Сохранить</button>
         </form>
     </div>
 
