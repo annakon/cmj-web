@@ -80,7 +80,7 @@
     <div class="container-fluid">
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Завершить администрирование</a></li>
+                <li><a href="page1.jsp">Завершить администрирование</a></li>
             </ul>
         </div>
     </div>

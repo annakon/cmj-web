@@ -2,15 +2,16 @@
 <%@ page import="ru.cmj.DbConnection" %>
 <%@ page import="java.sql.PreparedStatement" %>
 <%@ page import="java.sql.ResultSet" %>
+<%@ page import="ru.cmj.User" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <%
     try {
+        User us= (User) session.getAttribute("curUser");
         Boolean errorLogin = null;
-        String myname = (String) session.getAttribute("username");
 
-        if (myname != null) {
+        if (us != null) {
             errorLogin=false;
         } else {
             String subm = request.getParameter("submit");
@@ -26,7 +27,15 @@
                 //выполняем запрос
                 ResultSet result2 = preparedStatement.executeQuery();
                 errorLogin=!result2.next();
-                //TODO: класть объект user в сессию
+                if(!errorLogin){
+                    us=new User();
+                    us.setFio(result2.getString("fio"));
+                    us.setCanAdmin(result2.getInt("can_create_user")==1);
+                    us.setCanRead(result2.getInt("can_read")==1);
+                    us.setCanEdit(result2.getInt("can_edit")==1);
+                    us.setCanReq(result2.getInt("can_Req")==1);
+                    session.setAttribute("curUser",us);
+                }
             }
         }
         pageContext.setAttribute("errorLogin", errorLogin);
@@ -58,8 +67,8 @@
     <c:if test="${errorLogin==false}"><c:redirect url="/page1.jsp"/></c:if>
     <form class="form-signin" role="form" method="POST">
         <h2 class="form-signin-heading">Введите логин и пароль</h2>
-        <input class="form-control" placeholder="Логин" name="fio" required autofocus>
-        <input type="password" class="form-control" placeholder="Пароль" name="password" required>
+        <input class="form-control" placeholder="Логин" name="fio" required autofocus autocomplete="off">
+        <input type="password" class="form-control" placeholder="Пароль" name="password" required autocomplete="off">
         <button class="btn btn-lg btn-primary btn-block" type="submit" name="submit" value="submit">Войти</button>
         <c:if test="${errorLogin==true}"><div style="color: red">Неверный логин или пароль</div></c:if>
 
