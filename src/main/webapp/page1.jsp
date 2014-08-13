@@ -39,7 +39,7 @@
                     <button type="button" class="btn btn-primary">Зарегистрировать</button>
                     <button type="button" class="btn btn-primary">Связать</button>
                 </div></li>
-                <li><a href="emp.jsp">Администрирование</a></li>
+                <li><a href="WEB-INF/views/emp.jsp">Администрирование</a></li>
                 <li><a href="logout.jsp">Выход</a></li>
             </ul>
         </div>
