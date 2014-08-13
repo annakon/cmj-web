@@ -1,8 +1,8 @@
-<%@ page import="java.sql.Connection" %>
 <%@ page import="ru.cmj.DbConnection" %>
+<%@ page import="ru.cmj.domain.User" %>
+<%@ page import="java.sql.Connection" %>
 <%@ page import="java.sql.PreparedStatement" %>
 <%@ page import="java.sql.ResultSet" %>
-<%@ page import="ru.cmj.User" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 

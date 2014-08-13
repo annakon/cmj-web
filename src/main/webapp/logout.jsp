@@ -1,4 +1,3 @@
-<%@ page import="ru.cmj.User" %>
 <%--
   Created by IntelliJ IDEA.
   User: akonshina
@@ -13,6 +12,6 @@
 %>
 <html>
 <body>
-   <c:redirect url="index.jsp"/>
+<c:redirect url="index.jsp"/>
 </body>
 </html>
