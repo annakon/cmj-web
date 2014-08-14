@@ -12,6 +12,6 @@
 %>
 <html>
 <body>
-<c:redirect url="index.jsp"/>
+<c:redirect url="WEB-INF/views/index.jsp"/>
 </body>
 </html>
