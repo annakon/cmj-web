@@ -12,10 +12,10 @@
     <title>CompanyMedia</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="css/page1.css" rel="stylesheet">
+    <link href="../../css/page1.css" rel="stylesheet">
 
     <!-- Just for debugging purposes. Don't actually copy this line! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -39,8 +39,8 @@
                     <button type="button" class="btn btn-primary">Зарегистрировать</button>
                     <button type="button" class="btn btn-primary">Связать</button>
                 </div></li>
-                <li><a href="WEB-INF/views/emp.jsp">Администрирование</a></li>
-                <li><a href="logout.jsp">Выход</a></li>
+                <li><a href="emp.jsp">Администрирование</a></li>
+                <li><a href="../../logout.jsp">Выход</a></li>
             </ul>
         </div>
     </div>
@@ -88,6 +88,6 @@
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
 </body>
 </html>

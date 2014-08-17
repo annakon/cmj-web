@@ -1,4 +1,3 @@
-<%@ page import="ru.cmj.DbConnection" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
@@ -23,9 +22,8 @@
 </head>
 <body>
 <div class="container">
-    <c:if test="${errorLogin==false}"><c:redirect url="/page1.jsp"/></c:if>
-    <form class="form-signin" role="form" method="POST" action="/index/login">
-        <h2 class="form-signin-heading">Введите логин и пароль</h2>
+    <form class="form-signin" role="form" method="POST" action="/login">
+    <h2 class="form-signin-heading">Введите логин и пароль</h2>
         <input class="form-control" placeholder="Логин" name="fio" required autofocus autocomplete="off">
         <input type="password" class="form-control" placeholder="Пароль" name="password" required autocomplete="off">
         <button class="btn btn-lg btn-primary btn-block" type="submit" name="submit" value="submit">Войти</button>
