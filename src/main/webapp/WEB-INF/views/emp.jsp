@@ -38,11 +38,11 @@
 
 <body>
 
-<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+<div class="navbar navbar-default navbar-fixed-top navborder" role="navigation">
     <div class="container-fluid">
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="page1.jsp">Завершить администрирование</a></li>
+                <li><a href="/page1/list">Завершить администрирование</a></li>
             </ul>
         </div>
     </div>

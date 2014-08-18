@@ -94,3 +94,18 @@ body {
     display: inline-block;
     border-radius: 50%;
 }
+
+.navbar .divider {
+    display: inline;
+    border: 1px solid #DDDDDD;
+    height: 50px;
+}
+
+.navbar-default .navbar-nav.colblue > li > a {
+    color: #428BCA
+}
+
+.navborder {
+    border-color: #DDDDDD;
+    border-width: 2px;
+}

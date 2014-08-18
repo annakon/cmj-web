@@ -29,18 +29,23 @@
 
 <body>
 
-<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+<div class="navbar navbar-default  navbar-fixed-top navborder" role="navigation">
     <div class="container-fluid">
         <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav colblue">
+                <li><a href="/doc/new">Создать</a></li>
+                <li class="divider"></li>
+                <li><a href="/doc/new">Редактировать</a></li>
+                <li class="divider"></li>
+                <li><a href="/doc/new">Зарегистрировать</a></li>
+                <li class="divider"></li>
+                <li><a href="/doc/new">Связать</a></li>
+            </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><div class="btn-group-lg">
-                    <button type="button" class="btn btn-primary">Создать</button>
-                    <button type="button" class="btn btn-primary">Редактировать</button>
-                    <button type="button" class="btn btn-primary">Зарегистрировать</button>
-                    <button type="button" class="btn btn-primary">Связать</button>
-                </div></li>
-                <li><a href="emp.jsp">Администрирование</a></li>
-                <li><a href="../../logout.jsp">Выход</a></li>
+
+
+                <li><a href="/emp/list">Администрирование</a></li>
+                <li><a href="/page1/logout">Выход</a></li>
             </ul>
         </div>
     </div>
