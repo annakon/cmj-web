@@ -34,7 +34,10 @@
 <body>
 <div class="container" style="padding: 40px 15px;">
     <div class="panel panel-default pull-left" style="width: 800px;padding:20px">
-        <form role="form">
+        <form role="form" method="POST" action="/doc/save">
+            <div class="form-group">
+                <a href="/doc/back"><span class="glyphicon glyphicon-arrow-left">назад</span></a>
+            </div>
             <div class="form-group">
                 <label for="subject">Заголовок</label>
                 <input class="form-control" id="subject" name="subject" placeholder="Введите заголовок">

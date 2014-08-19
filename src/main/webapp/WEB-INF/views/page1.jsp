@@ -1,5 +1,5 @@
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -74,14 +74,16 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
+                    <c:forEach items="${mas}" var="d">
+                        <tr>
+                            <td></td>
+                            <td><c:out value="${d.out_date}"/></td>
+                            <td></td>
+                            <td><c:out value="${d.subject}"/></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </c:forEach>
                     </tbody>
                 </table>
             </div>

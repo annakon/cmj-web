@@ -33,7 +33,7 @@
           class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-        <property name="url" value="jdbc:mysql://localhost/cmj"/>
+        <property name="url" value="jdbc:mysql://localhost/cmj?useUnicode=yes&amp;characterEncoding=UTF-8"/>
         <property name="username" value="forcmj"/>
         <property name="password" value="superpass!23"/>
     </bean>
