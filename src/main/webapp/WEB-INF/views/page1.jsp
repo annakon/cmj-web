@@ -37,7 +37,7 @@
                 <li class="divider"></li>
                 <li><a href="/doc/new">Редактировать</a></li>
                 <li class="divider"></li>
-                <li><a href="/doc/new">Зарегистрировать</a></li>
+                <li><a href="#" onclick="req()">Зарегистрировать</a></li>
                 <li class="divider"></li>
                 <li><a href="/doc/new">Связать</a></li>
             </ul>
@@ -65,6 +65,7 @@
                 <table class="table table-striped">
                     <thead>
                     <tr>
+                        <th></th>
                         <th>#</th>
                         <th>Дата документа</th>
                         <th>Дата регистрации</th>
@@ -76,11 +77,12 @@
                     <tbody>
                     <c:forEach items="${mas}" var="d">
                         <tr>
+                            <td><input type="radio" name="curdoc" value="<c:out value="${d.id}"/>"></td>
                             <td></td>
                             <td><c:out value="${d.out_date}"/></td>
                             <td></td>
                             <td><c:out value="${d.subject}"/></td>
-                            <td></td>
+                            <td><c:out value="${d.adr}"/></td>
                             <td></td>
                         </tr>
                     </c:forEach>
@@ -96,5 +98,6 @@
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src="../../js/bootstrap.min.js"></script>
+<script src="../../js/main.js"></script>
 </body>
 </html>

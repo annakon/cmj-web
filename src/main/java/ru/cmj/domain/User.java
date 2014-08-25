@@ -4,8 +4,17 @@ package ru.cmj.domain;
  * Created by akonshina on 09.08.14.
  */
 public class User {
+    int id;
     String fio;
     boolean canReq, canRead, canAdmin, canEdit;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getFio() {
         return fio;
